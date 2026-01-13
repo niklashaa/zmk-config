@@ -16,15 +16,30 @@
 #define LOWER 1
 #define MAGIC 2
 
+// Home row mod timing
+#define HM_TAPPING_TERM 280
+#define HM_QUICK_TAP 175
+#define HM_PRIOR_IDLE 150
+
 / {
     behaviors {
-        // For the "layer" key, it'd nice to be able to use it as either a shift or a toggle.
-        // Configure it as a tap dance, so the first tap (or hold) is a &mo and the second tap is a &to
+        // Layer tap-dance: tap = momentary, double-tap = toggle
         layer_td: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&mo LOWER>, <&to LOWER>;
+        };
+
+        // Standard home row mod (for keys without umlaut behavior)
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <HM_TAPPING_TERM>;
+            quick-tap-ms = <HM_QUICK_TAP>;
+            require-prior-idle-ms = <HM_PRIOR_IDLE>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
         };
     };
 
@@ -73,14 +88,21 @@
             // |  ESC  |  A  |  S  |  D   |  F   |  G   |                                                 |  H   |   J   |   K   |  L   |   ;   |   '  |
             // |   `   |  Z  |  X  |  C   |  V   |  B   | LSHFT | LCTRL | LOWER | | LGUI  | RCTRL | RSHFT |  N   |   M   |   ,   |  .   |   /   | PGUP |
             // | MAGIC | HOME| END | LEFT | RIGHT|      | BSPC  | DEL   | LALT  | | RALT  | RET   | SPACE |      |  UP   | DOWN  |  [   |   ]   | PGDN |
+            //
+            // Home row mods (GACS):
+            // Left:  A=GUI, S=ALT, D=CTRL, F=SHIFT
+            // Right: J=SHIFT, K=CTRL, L=ALT, ;=GUI
+            //
+            // For umlauts: Use ABC Extended layout on macOS
+            // Alt+U then vowel = ä/ö/ü, Alt+S = ß
 
             bindings = <
-            &kp F1         &kp F2   &kp F3      &kp F4      &kp F5                                                                                         &kp F6  &kp F7      &kp F8      &kp F9      &kp F10
-            &kp EQUAL      &kp N1   &kp N2      &kp N3      &kp N4      &kp N5                                                                     &kp N6  &kp N7  &kp N8      &kp N9      &kp N0      &kp MINUS
-            &kp TAB        &kp Q    &kp W       &kp E       &kp R       &kp T                                                                      &kp Y   &kp U   &kp I       &kp O       &kp P       &kp BSLH
-            &kp ESC        &kp A    &kp S       &kp D       &kp F       &kp G                                                                      &kp H   &kp J   &kp K       &kp L       &kp SEMI    &kp SQT
-            &kp GRAVE      &kp Z    &kp X       &kp C       &kp V       &kp B   &kp LSHFT   &kp LCTRL   &layer_td  &kp LGUI  &kp RCTRL &kp RSHFT   &kp N   &kp M   &kp COMMA   &kp DOT     &kp FSLH    &kp PG_UP
-            &mo MAGIC      &kp HOME &kp END     &kp LEFT    &kp RIGHT           &kp BSPC    &kp DEL     &kp LALT   &kp RALT  &kp RET   &kp SPACE           &kp UP  &kp DOWN    &kp LBKT    &kp RBKT    &kp PG_DN
+            &kp F1         &kp F2   &kp F3      &kp F4      &kp F5                                                                                                    &kp F6  &kp F7          &kp F8      &kp F9      &kp F10
+            &kp EQUAL      &kp N1   &kp N2      &kp N3      &kp N4      &kp N5                                                                            &kp N6      &kp N7  &kp N8          &kp N9      &kp N0      &kp MINUS
+            &kp TAB        &kp Q    &kp W       &kp E       &kp R       &kp T                                                                             &kp Y       &kp U   &kp I           &kp O       &kp P       &kp BSLH
+            &kp ESC        &hm LGUI A  &hm LALT S  &hm LCTRL D  &hm LSHFT F  &kp G                                                                        &kp H       &hm RSHFT J  &hm RCTRL K  &hm RALT L  &hm RGUI SEMI  &kp SQT
+            &kp GRAVE      &kp Z    &kp X       &kp C       &kp V       &kp B   &kp LSHFT   &kp LCTRL   &layer_td  &kp LGUI  &kp RCTRL &kp RSHFT          &kp N       &kp M   &kp COMMA       &kp DOT     &kp FSLH    &kp PG_UP
+            &mo MAGIC      &kp HOME &kp END     &kp LEFT    &kp RIGHT           &kp BSPC    &kp DEL     &kp LALT   &kp RALT  &kp RET   &kp SPACE                      &kp UP  &kp DOWN        &kp LBKT    &kp RBKT    &kp PG_DN
             >;
         };
 
