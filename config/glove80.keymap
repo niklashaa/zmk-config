@@ -154,14 +154,14 @@
             //
             // Left hand:
             //   Q=!   W=@   E=#   R=$   T=%
-            //   A={   S=}   D=[   F=]   G=`
+            //   A=[   S=]   D={   F=}   G=`
             //   Z=(   X=)   C=<   V=>   B=~
 
             bindings = <
             &none             &none               &none           &none           &none                                                                                                           &none      &none      &none      &none      &none
             &none             &none               &none           &none           &none           &none                                                                                &none      &none      &none      &none      &none      &none
             &none             &kp EXCL            &kp AT          &kp HASH        &kp DLLR        &kp PRCNT                                                                            &none      &none      &none      &none      &none      &none
-            &none             &kp LBRC            &kp RBRC        &kp LBKT        &kp RBKT        &kp GRAVE                                                                            &none      &none      &none      &none      &none      &none
+            &none             &kp LBKT            &kp RBKT        &kp LBRC        &kp RBRC        &kp GRAVE                                                                            &none      &none      &none      &none      &none      &none
             &none             &kp LPAR            &kp RPAR        &kp LT          &kp GT          &kp TILDE       &none     &none     &none            &none     &trans    &none       &none      &none      &none      &none      &none      &none
             &none             &none               &none           &none           &none                           &none     &none     &none            &none     &none     &none                  &none      &none      &none      &none      &none
             >;
