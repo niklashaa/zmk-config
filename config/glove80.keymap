@@ -18,9 +18,9 @@
 #define NAV 3
 
 // Home row mod timing
-#define HM_TAPPING_TERM 280
-#define HM_QUICK_TAP 175
-#define HM_PRIOR_IDLE 150
+#define HM_TAPPING_TERM 250
+#define HM_QUICK_TAP 150
+#define HM_PRIOR_IDLE 100
 
 / {
     behaviors {
