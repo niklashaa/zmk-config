@@ -40,6 +40,7 @@
             quick-tap-ms = <HM_QUICK_TAP>;
             require-prior-idle-ms = <HM_PRIOR_IDLE>;
             flavor = "balanced";
+            hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
         };
     };
