@@ -138,10 +138,11 @@
 
         lower_layer {
             // LOWER layer - Navigation, brackets (right) + media (left)
-            // Hold LOWER (left thumb) for arrows + brackets + brightness/volume
+            // Hold LOWER (left thumb) for arrows + brackets + media
             //
-            // Left hand (home row):
+            // Left hand:
             //   A=Bright↓  S=Bright↑  D=Mute  F=Vol↓  G=Vol↑
+            //   C=Prev     V=Play     B=Next
             //
             // Right hand:
             //   Y=Home  U=↑     I=End   O=(     P=)
@@ -153,7 +154,7 @@
             &none             &none               &none           &none           &none           &none                                                                                &none      &none      &none      &none      &none      &none
             &none             &none               &none           &none           &none           &none                                                                                &kp HOME   &kp UP     &kp END    &kp LPAR   &kp RPAR   &none
             &none             &kp C_BRI_DN        &kp C_BRI_UP    &kp C_MUTE      &kp C_VOL_DN    &kp C_VOL_UP                                                                         &kp LEFT   &kp DOWN   &kp RIGHT  &kp LBKT   &kp RBKT   &none
-            &none             &none               &none           &none           &none           &none           &none     &trans    &none            &none     &none     &none       &none      &none      &none      &kp LBRC   &kp RBRC   &none
+            &none             &none               &none           &kp C_PREV      &kp C_PP        &kp C_NEXT      &none     &trans    &none            &none     &none     &none       &none      &none      &none      &kp LBRC   &kp RBRC   &none
             &none             &none               &none           &none           &none                           &none     &none     &none            &none     &none     &none                  &none      &none      &none      &none      &none
             >;
         };
