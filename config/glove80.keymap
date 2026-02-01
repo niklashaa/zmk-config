@@ -20,7 +20,7 @@
 // Home row mod timing
 #define HM_TAPPING_TERM 250
 #define HM_QUICK_TAP 150
-#define HM_PRIOR_IDLE 150
+#define HM_PRIOR_IDLE 100
 
 / {
     behaviors {
